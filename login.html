@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora Network - Đăng Nhập / Đăng Ký</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2ecc71; /* Màu xanh lá Minecraft */
+            --google-color: #ea4335;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --input-bg: #0f172a;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?q=80&w=1920') no-repeat center center/cover;
+        }
+
+        .auth-container {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .auth-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .auth-container p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background-color: var(--input-bg);
+            color: var(--text-light);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            margin-top: 10px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #334155;
+        }
+
+        .divider span {
+            padding: 0 10px;
+        }
+
+        .btn-google {
+            background-color: var(--google-color);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3);
+        }
+
+        .switch-mode {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .switch-mode span {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Message Box */
+        .alert-box {
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .alert-error {
+            background-color: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="auth-container">
+    <h2 id="form-title">Velora Network</h2>
+    <p class="subtitle" id="form-subtitle">Đăng nhập để quản lý tài khoản Minecraft</p>
+
+    <div id="alert-msg" class="alert-box alert-error"></div>
+
+    <form id="auth-form">
+        <div class="input-group">
+            <label>Địa chỉ Email</label>
+            <input type="email" id="email" placeholder="name@example.com" required>
+        </div>
+        <div class="input-group">
+            <label>Mật khẩu</label>
+            <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-btn">
+            <i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập
+        </button>
+    </form>
+
+    <div class="divider">
+        <span>HOẶC</span>
+    </div>
+
+    <button id="btn-google" class="btn btn-google">
+        <i class="fa-brands fa-google"></i> Đăng nhập bằng Google
+    </button>
+
+    <div class="switch-mode">
+        <span id="toggle-text">Chưa có tài khoản?</span> 
+        <span id="toggle-btn" onclick="toggleAuthMode()">Đăng ký ngay</span>
+    </div>
+</div>
+
+<!-- Firebase Modular Script -->
+<script type="module">
+    import { 
+        auth, 
+        db, 
+        googleProvider, 
+        signInWithPopup, 
+        signInWithEmailAndPassword, 
+        createUserWithEmailAndPassword,
+        onAuthStateChanged,
+        ref,
+        set,
+        get,
+        child
+    } from './firebase-config.js';
+
+    let isLoginMode = true;
+
+    // Hiển thị thông báo lỗi
+    function showError(message) {
+        const alertBox = document.getElementById('alert-msg');
+        alertBox.innerText = message;
+        alertBox.style.display = 'block';
+    }
+
+    // Chuyển đổi giữa Đăng Nhập và Đăng Ký
+    window.toggleAuthMode = function() {
+        isLoginMode = !isLoginMode;
+        document.getElementById('form-title').innerText = isLoginMode ? 'Velora Network' : 'Tạo Tài Khoản';
+        document.getElementById('form-subtitle').innerText = isLoginMode ? 'Đăng nhập để quản lý tài khoản Minecraft' : 'Đăng ký trải nghiệm server Velora Network';
+        document.getElementById('submit-btn').innerHTML = isLoginMode ? '<i class="fa-solid fa-right-to-bracket"></i> Đăng Nhập' : '<i class="fa-solid fa-user-plus"></i> Tạo Tài Khoản';
+        document.getElementById('toggle-text').innerText = isLoginMode ? 'Chưa có tài khoản?' : 'Đã có tài khoản?';
+        document.getElementById('toggle-btn').innerText = isLoginMode ? 'Đăng ký ngay' : 'Đăng nhập';
+        document.getElementById('alert-msg').style.display = 'none';
+    };
+
+    // Hàm tạo hoặc cập nhật hồ sơ người dùng trong Database
+    async function saveUserData(user) {
+        const userRef = ref(db, 'users/' + user.uid);
+        const snapshot = await get(userRef);
+        
+        // Nếu người dùng chưa có dữ liệu trên Realtime Database thì khởi tạo mới
+        if (!snapshot.exists()) {
+            await set(userRef, {
+                email: user.email,
+                displayName: user.displayName || 'Thành viên mới',
+                avatar: user.photoURL || 'https://mc-heads.net/avatar/MSTEVE',
+                mcUsername: '',
+                createdAt: new Date().toISOString()
+            });
+        }
+    }
+
+    // Kiểm tra nếu người dùng đã đăng nhập từ trước -> Chuyển hướng sang Settings
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            window.location.href = "settings.html";
+        }
+    });
+
+    // 1. Xử lý Đăng nhập / Đăng ký bằng Email
+    document.getElementById('auth-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        document.getElementById('alert-msg').style.display = 'none';
+
+        try {
+            let userCredential;
+            if (isLoginMode) {
+                userCredential = await signInWithEmailAndPassword(auth, email, password);
+            } else {
+                userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            }
+            await saveUserData(userCredential.user);
+            window.location.href = "settings.html";
+        } catch (error) {
+            let errorMsg = "Có lỗi xảy ra, vui lòng thử lại!";
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+                errorMsg = "Email hoặc mật khẩu không chính xác!";
+            } else if (error.code === 'auth/email-already-in-use') {
+                errorMsg = "Email này đã được sử dụng!";
+            } else if (error.code === 'auth/weak-password') {
+                errorMsg = "Mật khẩu phải từ 6 ký tự trở lên!";
+            }
+            showError(errorMsg);
+        }
+    });
+
+    // 2. Xử lý Đăng nhập bằng Google
+    document.getElementById('btn-google').addEventListener('click', async () => {
+        document.getElementById('alert-msg').style.display = 'none';
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            await saveUserData(result.user);
+            window.location.href = "settings.html";
+        } catch (error) {
+            showError("Đăng nhập Google thất bại: " + error.message);
+        }
+    });
+</script>
+
+</body>
+  </html>
+
