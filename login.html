@@ -302,7 +302,7 @@
         try {
             const result = await signInWithPopup(auth, googleProvider);
             await saveUserData(result.user);
-            window.location.href = "settings.html";
+            window.location.href = "home.html";
         } catch (error) {
             showError("Đăng nhập Google thất bại: " + error.message);
         }
