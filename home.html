@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora Network - Trang Chủ</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --primary-hover: #27ae60;
+            --discord-color: #5865F2;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            object-fit: cover;
+        }
+
+        .btn-nav {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-settings {
+            background-color: #334155;
+            color: var(--text-light);
+        }
+
+        .btn-settings:hover {
+            background-color: #475569;
+        }
+
+        .btn-logout {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background-color: #dc2626;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1627856013091-fed6e4e30025?q=80&w=1920') no-repeat center center/cover;
+        }
+
+        .welcome-badge {
+            background: rgba(46, 204, 113, 0.15);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-hero {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-mc {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.35);
+        }
+
+        .btn-mc:hover {
+            transform: translateY(-2px);
+            background-color: var(--primary-hover);
+        }
+
+        .btn-discord {
+            background-color: var(--discord-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.35);
+        }
+
+        .btn-discord:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Toast Popup */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            z-index: 2000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #090d16;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-cube"></i> VELORA NETWORK
+        </div>
+        <div class="user-nav">
+            <img id="nav-avatar" class="user-avatar" src="https://mc-heads.net/avatar/MSTEVE" alt="Avatar">
+            <a href="settings.html" class="btn-nav btn-settings">
+                <i class="fa-solid fa-gear"></i> Cài Đặt
+            </a>
+            <button id="logout-btn" class="btn-nav btn-logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Đăng Xuất
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="welcome-badge" id="user-greeting">
+            Xin chào, Đang tải thông tin...
+        </div>
+        <h1>MÁY CHỦ MINECRAFT VELORA</h1>
+        <p>Hệ thống Survival & Skyblock thế hệ mới. Hãy sao chép IP bên dưới để tham gia cùng bạn bè!</p>
+        
+        <div class="btn-container">
+            <!-- Nút Copy IP Minecraft -->
+            <button class="btn-hero btn-mc" onclick="copyIP('play.veloranetwork.com')">
+                <i class="fa-solid fa-server"></i> IP: play.veloranetwork.com
+            </button>
+            
+            <!-- Nút Discord -->
+            <a href="https://discord.gg/YOUR_INVITE_CODE" target="_blank" class="btn-hero btn-discord">
+                <i class="fa-brands fa-discord"></i> Kênh Discord
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Điểm Nổi Bật Của Server</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Hiệu Năng Cao & Mượt Mà</h3>
+                <p>Máy chủ sử dụng cấu hình tối tân, tối ưu hóa TPS giúp trải nghiệm chơi mượt mà không giật lag.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-users"></i>
+                <h3>Cộng Đồng Thân Thiện</h3>
+                <p>Đội ngũ Staff hỗ trợ nhiệt tình 24/7 cùng cộng đồng người chơi văn minh, đông đảo.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Bảo Mật & Anti-Cheat</h3>
+                <p>Hệ thống chống gian lận tiên tiến bảo đảm sự công bằng tuyệt đối cho tất cả mọi người.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thông báo nhỏ khi Copy IP -->
+    <div id="toast" class="toast">Đã copy IP Server thành công!</div>
+
+    <footer>
+        <p>&copy; Velora Network. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+    </footer>
+
+    <!-- Firebase SDK Modular -->
+    <script type="module">
+        import { 
+            auth, 
+            db, 
+            onAuthStateChanged, 
+            signOut, 
+            ref, 
+            get, 
+            child 
+        } from './firebase-config.js';
+
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // Lấy thông tin chi tiết từ Realtime Database
+                const dbRef = ref(db);
+                try {
+                    const snapshot = await get(child(dbRef, `users/${user.uid}`));
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+                        const displayName = userData.mcUsername || userData.displayName || user.email;
+                        document.getElementById('user-greeting').innerText = `Xin chào, ${displayName}!`;
+                        if (userData.avatar) {
+                            document.getElementById('nav-avatar').src = userData.avatar;
+                        }
+                    } else {
+                        document.getElementById('user-greeting').innerText = `Xin chào, ${user.email}!`;
+                    }
+                } catch (error) {
+                    console.error("Lỗi khi lấy thông tin người dùng:", error);
+                }
+            } else {
+                // Chưa đăng nhập -> Đẩy về trang Login
+                window.location.href = "login.html";
+            }
+        });
+
+        // Xử lý Đăng xuất
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = "login.html";
+            });
+        });
+
+        // Hàm Copy IP Server
+        window.copyIP = function(ip) {
+            navigator.clipboard.writeText(ip).then(() => {
+                const toast = document.getElementById('toast');
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2500);
+            });
+        };
+    </script>
+</body>
+</html>
+
