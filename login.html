@@ -282,7 +282,7 @@
                 userCredential = await createUserWithEmailAndPassword(auth, email, password);
             }
             await saveUserData(userCredential.user);
-            window.location.href = "settings.html";
+            window.location.href = "home.html";
         } catch (error) {
             let errorMsg = "Có lỗi xảy ra, vui lòng thử lại!";
             if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
